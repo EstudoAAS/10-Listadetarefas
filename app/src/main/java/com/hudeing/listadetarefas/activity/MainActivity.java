@@ -11,10 +11,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.hudeing.listadetarefas.adapter.TarefaAdapter;
 import com.hudeing.listadetarefas.R;
+import com.hudeing.listadetarefas.helper.RecyclerItemClickListener;
 import com.hudeing.listadetarefas.model.Tarefa;
 
 import java.util.ArrayList;
@@ -33,7 +36,39 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Configurar recycler
         recyclerView = findViewById(R.id.recyclerView);
+
+        //Adicionar evento de clique
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(
+                getApplicationContext(),
+                recyclerView,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Toast.makeText(
+                                getApplicationContext(),
+                                "onItemClick",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        Toast.makeText(
+                                getApplicationContext(),
+                                "onLongItemClick",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+                }
+        ));
+
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
