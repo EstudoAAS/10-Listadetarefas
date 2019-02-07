@@ -20,6 +20,7 @@ import com.hudeing.listadetarefas.adapter.TarefaAdapter;
 import com.hudeing.listadetarefas.R;
 import com.hudeing.listadetarefas.helper.DBHelper;
 import com.hudeing.listadetarefas.helper.RecyclerItemClickListener;
+import com.hudeing.listadetarefas.helper.TarefaDAO;
 import com.hudeing.listadetarefas.model.Tarefa;
 
 import java.util.ArrayList;
@@ -99,12 +100,14 @@ public class MainActivity extends AppCompatActivity {
     public void carregarListaTarefas() {
 
         //Listar tarefas
-        Tarefa tarefa1 =new Tarefa();
+        /*Tarefa tarefa1 =new Tarefa();
         tarefa1.setNomeTarefa("Ir ao mercado");
         listaTarefas.add(tarefa1);
         Tarefa tarefa2 =new Tarefa();
         tarefa2.setNomeTarefa("Ir a feira");
-        listaTarefas.add(tarefa2);
+        listaTarefas.add(tarefa2);*/
+        TarefaDAO tarefaDAO = new TarefaDAO( getApplicationContext() );
+        listaTarefas = tarefaDAO.listar();
 
         /*
             Exibe lista de tarefas no RecyclerView

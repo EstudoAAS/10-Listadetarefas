@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/textTarefa"
+            android:id="@+id/editTarefa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Digite uma tarefa" />
