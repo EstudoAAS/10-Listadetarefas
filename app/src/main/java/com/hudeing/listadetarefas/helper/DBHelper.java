@@ -38,7 +38,7 @@ public class DBHelper extends SQLiteOpenHelper {
         try {
             db.execSQL(sql);
             onCreate(db);
-            Log.i("INFO DB", "Sucesso ao atualiza App" );
+            Log.i("INFO DB", "Sucesso ao atualizar App" );
         } catch (Exception e) {
             Log.i("INFO DB", "Erro ao atualizar App " + e.getMessage() );
         }

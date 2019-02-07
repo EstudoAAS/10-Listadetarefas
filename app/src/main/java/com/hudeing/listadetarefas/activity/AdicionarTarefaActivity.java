@@ -1,19 +1,25 @@
 package com.hudeing.listadetarefas.activity;
 
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.hudeing.listadetarefas.R;
+import com.hudeing.listadetarefas.helper.TarefaDAO;
+import com.hudeing.listadetarefas.model.Tarefa;
+
 
 public class AdicionarTarefaActivity extends AppCompatActivity {
+    private TextInputEditText editTarefa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adicionar_tarefa);
+
+        editTarefa = findViewById(R.id.textTarefa);
     }
 
     @Override
@@ -27,7 +33,12 @@ public class AdicionarTarefaActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.itemSalvar:
                 //Executa ação para o item salvar
-                Toast.makeText(AdicionarTarefaActivity.this, "Botão salvar pressionado", Toast.LENGTH_SHORT).show();
+                TarefaDAO tarefaDAO = new TarefaDAO(getApplicationContext());
+
+                Tarefa tarefa = new Tarefa();
+                tarefa.setNomeTarefa("Ir ao mercado");
+                tarefaDAO.salvar( tarefa );
+
                 break;
         }
         return super.onOptionsItemSelected(item);

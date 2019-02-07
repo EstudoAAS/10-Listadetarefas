@@ -1,5 +1,6 @@
 package com.hudeing.listadetarefas.activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.hudeing.listadetarefas.adapter.TarefaAdapter;
 import com.hudeing.listadetarefas.R;
+import com.hudeing.listadetarefas.helper.DBHelper;
 import com.hudeing.listadetarefas.helper.RecyclerItemClickListener;
 import com.hudeing.listadetarefas.model.Tarefa;
 
@@ -38,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
 
         //Configurar recycler
         recyclerView = findViewById(R.id.recyclerView);
+
+        /*DBHelper db = new DBHelper( getApplicationContext() );
+
+        ContentValues cv = new ContentValues();
+        cv.put("nome","Teste");
+
+        db.getWritableDatabase().insert("tarefas", null, cv);*/
 
         //Adicionar evento de clique
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(
